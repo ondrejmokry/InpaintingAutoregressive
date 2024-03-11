@@ -11,7 +11,7 @@ The preprint is available at [arXiv](http://arxiv.org/abs/2403.04433).
 The repository includes the MATLAB source codes needed to reproduce the research
 
 - **references** – Implementation of reference methods, namely SPAIN and SPAIN-MOD, with the help of [InpaintingRevisited](https://github.com/ondrejmokry/InpaintingRevisited) and [Dictionary learning for sparse audio inpainting](https://www.oeaw.ac.at/isf/forschung/fachbereiche-teams/mathematik/dictionary-learning-for-sparse-audio-inpainting).
-- **utils** – All the functions needed to run the main files, except for the codes for the [Psychoacoustically motivated evaluationk](#psychoacoustically-motivated-evaluation).
+- **utils** – All the functions needed to run the main files, except for the codes for the [Psychoacoustically motivated evaluation](#psychoacoustically-motivated-evaluation).
 - `gaps_table.mat` - Source signals and masks, taken from [TestSignals repository](https://github.com/ondrejmokry/TestSignals).
 - `maintest.m` - Main code running the test of the AR-based methods.
 - `maintest_spain.m` - Main code running the test of the SPAIN variants.
