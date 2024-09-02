@@ -34,7 +34,7 @@ If you want to try also the variant of SPAIN with dictionary learning as a refer
 
 For the assessment of statistical significance of the effect of the AR model estimator (LPC versus Burg algorithm), the [Wilcoxon signed rank test](https://www.mathworks.com/help/stats/signrank.html) was employed using the following hypotheses:
 - H0: Burg algorithm and LPC lead to results with the same median,
-- HA: Burg algorithm leads to results with higher median.
+- HA: Burg algorithm leads to results with *higher* median.
 This was performed separately for each inpainting method, AR model order, and evaluation metric (SDR, PEMO-Q ODG).
 
 The p-value displayed in the tables below indicate the rejection of the null hypothesis, i.e., p-value < 0.05 implies that the data feature enough evidence to reject the equality of the medians in favor of the alternative hypothesis HA (at the significance level of 5%). On the other hand, p-value > 0.05 means the test is inconclusive.
@@ -52,3 +52,24 @@ The p-value displayed in the tables below indicate the rejection of the null hyp
 | Janssen, gap-wise     | 8.94e-13 | 1.25e-18 | 1.86e-20 | 3.42e-16 | 5.10e-06 |
 | Janssen, Hann window  | 0.20     | 0.09     | 0.06     | 1.00     | 1.00     |
 | Janssen, rect. window | 2.11e-22 | 1.84e-18 | 0.02     | 0.99     | 0.99     |
+
+
+
+To assess the superiority of LPC in some cases, we performed the same test using a different altarnative hypothesis:
+- H0: Burg algorithm and LPC lead to results with the same median,
+- HA: Burg algorithm leads to results with *lower* median.
+In this case, p-values < 0.05 imply statistical significance of the LPC surpassing the Burg algorithm (at the significance level of 5%).
+
+| evaluation by SDR     | 256  | 512  | 1024 | 2048     | 3072     |
+|-----------------------|------|------|------|----------|----------|
+| extrapolation-based   | 1.00 | 1.00 | 1.00 | 1.00     | 1.00     |
+| Janssen, gap-wise     | 1.00 | 1.00 | 1.00 | 0.97     | 0.03     |
+| Janssen, Hann window  | 1.00 | 1.00 | 0.10 | 4.06e-18 | 3.22e-14 |
+| Janssen, rect. window | 1.00 | 1.00 | 0.61 | 0.01     | 7.01e-4  |
+
+| evaluation by ODG     | 256  | 512  | 1024 | 2048    | 3072    |
+|-----------------------|------|------|------|---------|---------|
+| extrapolation-based   | 1.00 | 1.00 | 1.00 | 1.00    | 1.00    |
+| Janssen, gap-wise     | 1.00 | 1.00 | 1.00 | 1.00    | 1.00    |
+| Janssen, Hann window  | 0.80 | 0.91 | 0.94 | 8.78e-4 | 4.67e-3 |
+| Janssen, rect. window | 1.00 | 1.00 | 0.98 | 0.01    | 8.69e-3 |
