@@ -1,6 +1,6 @@
 # InpaintingAutoregressive
 
-This is the accompanying repository for the article *On the Use of Autoregressive Methods for Audio Inpainting* authored by Ondřej Mokrý and Pavel Rajmic, submitted to EUSIPCO 2024.
+This is the accompanying repository for the article *On the Use of Autoregressive Methods for Audio Inpainting* authored by Ondřej Mokrý and Pavel Rajmic, submitted to ICASSP 2025.
 
 > The paper presents an evaluation of popular audio inpainting methods based on autoregressive modelling, namely, extrapolation-based and Janssen methods. A novel variant of the Janssen method suitable for gap inpainting is also proposed. The main differences between the particular popular approaches are pointed out, and a mid-scale computational experiment is presented. The results demonstrate the importance of the choice of the AR model estimator and the suitability of the new gap-wise Janssen method.
 
@@ -22,8 +22,7 @@ The repository includes the MATLAB source codes needed to reproduce the research
 
 Note that the codes to compute the psychoacoustically motivated metrics (PEMO-Q, PEAQ) are not provided.
 
-The PEAQ package ican be acquired from [TSP Lab of McGill University](http://www-mmsp.ece.mcgill.ca/Documents/Software/). The PEMO-Q software is no longer publicly available. For that reason, and because the processing is very time- and spacedemanding, the provided .mat files with the results include all the data precomputed.
-
+The PEAQ package ican be acquired from [TSP Lab of McGill University](http://www-mmsp.ece.mcgill.ca/Documents/Software/), the PEMO-Q software is available through [University of Oldenburg](https://uol.de/en/mediphysics/downloads/pemo-q). Because the processing is very time- and spacedemanding, the provided .mat files with the results include all the data precomputed.
 
 ## Further dependencies
 
