@@ -35,6 +35,7 @@ If you want to try also the variant of SPAIN with dictionary learning as a refer
 For the assessment of statistical significance of the effect of the AR model estimator (LPC versus Burg algorithm), the [Wilcoxon signed rank test](https://www.mathworks.com/help/stats/signrank.html) was employed using the following hypotheses:
 - H0: Burg algorithm and LPC lead to results with the same median,
 - HA: Burg algorithm leads to results with *higher* median.
+
 This was performed separately for each inpainting method, AR model order, and evaluation metric (SDR, PEMO-Q ODG).
 
 The p-value displayed in the tables below indicate the rejection of the null hypothesis, i.e., p-value < 0.05 implies that the data feature enough evidence to reject the equality of the medians in favor of the alternative hypothesis HA (at the significance level of 5%). On the other hand, p-value > 0.05 means the test is inconclusive.
@@ -58,6 +59,7 @@ The p-value displayed in the tables below indicate the rejection of the null hyp
 To assess the superiority of LPC in some cases, we performed the same test using a different altarnative hypothesis:
 - H0: Burg algorithm and LPC lead to results with the same median,
 - HA: Burg algorithm leads to results with *lower* median.
+
 In this case, p-values < 0.05 imply statistical significance of the LPC surpassing the Burg algorithm (at the significance level of 5%).
 
 | evaluation by SDR     | 256  | 512  | 1024 | 2048     | 3072     |
