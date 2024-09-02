@@ -7,6 +7,7 @@ addpath("../utils")
 %% settings
 bootstrap = false;
 intervals = false;
+fold = "../results";
 
 filestoload = [ ...
     "results_01", "results_02", ...
@@ -15,12 +16,14 @@ filestoload = [ ...
     "results_07", "results_08", ...
     "results_09", "results_10" ...
     ];
-for f = 1:length(filestoload)
-    filestoload(f) = "../results/" + filestoload(f);
+
+if contains(fold, "irmas")
+    filestoload = filestoload(1:5);
 end
 
 % methods corresponding to fieldnames of the tables variable
-methods = ["extrapolation", "janssen", "janssen_hann", "janssen_tukey", "janssen_rect"];
+methods = ["extrapolation", "janssen", "janssen_hann", ... "janssen_tukey", 
+    "janssen_rect"];
 
 % metrics corresponding to variable names of the tables
 metrics = ["SDR", "PEMOQ", "PEAQ"];
@@ -29,11 +32,11 @@ ftitles = ["peak SDR", "peak ODG by PEMO-Q", "peak ODG by PEAQ"];
 
 %% load data
 fprintf("Loading %s...\n", filestoload(1))
-load(filestoload(1))
+load(fold + "/" + filestoload(1))
 for f = 2:length(filestoload)
     
     fprintf("Loading %s...\n", filestoload(f))
-    S = load(filestoload(f));
+    S = load(fold + "/" + filestoload(f));
     for m = 1:length(methods)
         tables.(methods(m)) = [tables.(methods(m)); S.tables.(methods(m))];
     end
@@ -49,7 +52,7 @@ for i = 1:length(metrics)
     figure
     colors = colororder;
     tls = tiledlayout(1, length(methods));
-    title(tls, {ftitles(i), "lighter shade: arburg", "darker shade, dashed: lpc"})
+    title(tls, {ftitles(i), "darker shade: arburg, lighter shade: lpc"})
     
     %% process
     % each method has its own subplot
@@ -60,7 +63,7 @@ for i = 1:length(metrics)
         gaps = unique(tables.(methods(m)).gap);
         ps = unique(tables.(methods(m)).p);
         data = NaN(length(signals), length(gaps), length(ps), 2);
-
+        opti = NaN(length(signals), length(gaps), length(ps), 2);
         for s = 1:length(signals)
             for g = 1:length(gaps)
                 for p = 1:length(ps)
@@ -75,8 +78,10 @@ for i = 1:length(metrics)
                     lpcrow = find(lpcrows);
 
                     % find maximum
-                    data(s, g, p, 1) = max(tables.(methods(m)).(metrics(i)){burgrow});
-                    data(s, g, p, 2) = max(tables.(methods(m)).(metrics(i)){lpcrow});
+                    [data(s, g, p, 1), opti(s, g, p, 1)] = max(tables.(methods(m)).(metrics(i)){burgrow});
+                    if lpcrow
+                        [data(s, g, p, 2), opti(s, g, p, 2)] = max(tables.(methods(m)).(metrics(i)){lpcrow});
+                    end
                     
                 end
             end
@@ -108,8 +113,8 @@ for i = 1:length(metrics)
         h = gobjects(length(ps), 1);
         for p = 1:length(ps)
             if intervals
-                h(p) = fillinterval(gaps, means(:, p, 1), lowers(:, p, 1), uppers(:, p, 1), 0.75 + 0.25*colors(p, :));
-                fillinterval(gaps, means(:, p, 2), lowers(:, p, 2), uppers(:, p, 2), colors(p, :))
+                h(p) = fillinterval(gaps, means(:, p, 1), lowers(:, p, 1), uppers(:, p, 1), colors(p, :));
+                fillinterval(gaps, means(:, p, 2), lowers(:, p, 2), uppers(:, p, 2), 0.75 + 0.25*colors(p, :))
             else
                 h(p) = plot(gaps, means(:, p, 1), "Color", colors(p, :));
                 plot(gaps, means(:, p, 2), "Color", 0.6 + 0.4*colors(p, :), "LineStyle", "--")

@@ -5,8 +5,9 @@ close all
 addpath("../utils")
 
 %% settings
-bootstrap = false;
+bootstrap = true;
 intervals = false;
+fold = "../results";
 
 filestoload = [ ...
     "results_01", "results_02", ...
@@ -15,12 +16,10 @@ filestoload = [ ...
     "results_07", "results_08", ...
     "results_09", "results_10" ...
     ];
-for f = 1:length(filestoload)
-    filestoload(f) = "../results/" + filestoload(f);
-end
 
 % methods corresponding to fieldnames of the tables variable
-methods = ["extrapolation", "janssen", "janssen_hann", "janssen_tukey", "janssen_rect"];
+methods = ["extrapolation", "janssen", "janssen_hann", ... "janssen_tukey", 
+    "janssen_rect"];
 
 % metrics corresponding to variable names of the tables
 metrics = ["SDR", "PEMOQ", "PEAQ"];
@@ -42,7 +41,7 @@ for i = 1:length(metrics)
     
         %% load data
         fprintf("Loading %s...\n", filestoload(f))
-        S = load(filestoload(f));
+        S = load(fold + "/" + filestoload(f));
         for m = 1:length(methods)
             tables.(methods(m)) = S.tables.(methods(m));
         end
