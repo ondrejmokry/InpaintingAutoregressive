@@ -29,3 +29,26 @@ The PEAQ package ican be acquired from [TSP Lab of McGill University](http://www
 The experiments were run in Matlab R2023a using Signal Processing Toolbox (Version 9.2), Parallel Computing Toolbox (Version 7.8) and [Large Time-Frequency Analysis Toolbox](http://ltfat.org/) (Version 2.4.0).
 
 If you want to try also the variant of SPAIN with dictionary learning as a reference method, the [CVX toolbox](http://cvxr.com/cvx/) is necessary.
+
+## Statistical testing of LPC versus Burg algorithm
+
+For the assessment of statistical significance of the effect of the AR model estimator (LPC versus Burg algorithm), the [Wilcoxon signed rank test](https://www.mathworks.com/help/stats/signrank.html) was employed using the following hypotheses:
+- H0: Burg algorithm and LPC lead to results with the same median,
+- HA: Burg algorithm leads to results with higher median.
+This was performed separately for each inpainting method, AR model order, and evaluation metric (SDR, PEMO-Q ODG).
+
+The p-value displayed in the tables below indicate the rejection of the null hypothesis, i.e., p-value < 0.05 implies that the data feature enough evidence to reject the equality of the medians in favor of the alternative hypothesis HA (at the significance level of 5%). On the other hand, p-value > 0.05 means the test is inconclusive.
+
+| evaluation by SDR     | 256      | 512      | 1024     | 2048     | 3072     |
+|-----------------------|----------|----------|----------|----------|----------|
+| extrapolation-based   | 1.06e-21 | 2.12e-22 | 2.12e-22 | 2.12e-22 | 3.58e-20 |
+| Janssen, gap-wise     | 2.16e-09 | 3.89e-13 | 5.54e-10 | 0.03     | 0.97     |
+| Janssen, Hann window  | 7.82e-05 | 6.19e-4  | 0.90     | 1.00     | 1.00     |
+| Janssen, rect. window | 6.69e-11 | 4.67e-06 | 0.39     | 0.99     | 1.00     |
+
+| evaluation by ODG     | 256      | 512      | 1024     | 2048     | 3072     |
+|-----------------------|----------|----------|----------|----------|----------|
+| extrapolation-based   | 6.35e-22 | 2.12e-22 | 2.12e-22 | 2.12e-22 | 3.57e-18 |
+| Janssen, gap-wise     | 8.94e-13 | 1.25e-18 | 1.86e-20 | 3.42e-16 | 5.10e-06 |
+| Janssen, Hann window  | 0.20     | 0.09     | 0.06     | 1.00     | 1.00     |
+| Janssen, rect. window | 2.11e-22 | 1.84e-18 | 0.02     | 0.99     | 0.99     |
