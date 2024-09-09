@@ -10,13 +10,13 @@ The preprint is available at [arXiv](http://arxiv.org/abs/2403.04433).
 
 The repository includes the MATLAB source codes needed to reproduce the research:
 
-- **plotting** - Matlab scripts that load the results and replicate the figures used in the paper + some more.
+- **plotting** – Matlab scripts that load the results and replicate the figures used in the paper + some more.
 - **references** – Implementation of reference methods, namely SPAIN and SPAIN-MOD, with the help of [InpaintingRevisited](https://github.com/ondrejmokry/InpaintingRevisited) and [Dictionary learning for sparse audio inpainting](https://www.oeaw.ac.at/isf/forschung/fachbereiche-teams/mathematik/dictionary-learning-for-sparse-audio-inpainting).
-- **results** - `.mat` files with all the SDR and ODG values from testing the methods. Recovered signals are *not* included due to file size limits. However, these can be reproduced using the `maintest.m` and `maintest_spain.m` scripts.
+- **results** – `.mat` files with all the SDR and ODG values from testing the methods. Recovered signals are *not* included due to file size limits. However, these can be reproduced using the `maintest.m` and `maintest_spain.m` scripts.
 - **utils** – All the functions needed to run the main files, except for the codes for the [Psychoacoustically motivated evaluation](#psychoacoustically-motivated-evaluation).
-- `gaps_table.mat` - Source signals and masks, taken from [TestSignals repository](https://github.com/ondrejmokry/TestSignals).
-- `maintest.m` - Main code running the test of the AR-based methods.
-- `maintest_spain.m` - Main code running the test of the SPAIN variants.
+- `gaps_table.mat` – Source signals and masks, taken from [TestSignals repository](https://github.com/ondrejmokry/TestSignals).
+- `maintest.m` – Main code running the test of the AR-based methods.
+- `maintest_spain.m` – Main code running the test of the SPAIN variants.
 
 For supplementary material (graphs, audio), see the [accompanying website](https://ondrejmokry.github.io/InpaintingAutoregressive/).
 
