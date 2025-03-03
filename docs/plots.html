@@ -4,7 +4,14 @@ layout: default
 
 <h1>Supplementary plots</h1>
 
-<h2>Results of the listening test</h2>
+<ol>
+    <li><a href=#boxplots>Results of the listening test</a></li>
+    <li><a href=#scatterplots>Comparison of AR model estimators</a></li>
+    <li><a href=#lineplots>Comparison of AR model orders</a></li>
+    <li><a href=#comparisonplots>Comparison of AR-based methods with SPAIN</a></li>
+</ol>
+
+<h2 id=boxplots>Results of the listening test</h2>
 
 <p>The listening test featured exactly the audio examples shown on <a href="./signals.html">the corresponing page</a>.</p>
 
@@ -14,11 +21,84 @@ layout: default
 
 <p>This plot corresponds to Figure 4 in the paper, only the style is slightly different.</p>
 
-<img src="figures/boxplot.svg">
+<img src="figures/box plots/boxplot.svg">
 
 <h3>Boxplot of all the scores grouped by gap length</h3>
 
-<img src="figures/boxplot_grouped.svg">
+<img src="figures/box plots/boxplot_grouped.svg">
+
+<h2 id=scatterplots>Comparison of AR model estimators</h2>
+
+<p>This section features the comparison of the AR model estimators              .</p>
+<p>The ODG plot for window/context length 4096 samples corresponds to Figure 1 in the paper.</p>
+<p>For statistical testing of the differences, see the corresponding pages for window/context length <a href="./pvals_short.html">4096</a> or <a href="./pvals_long.html">8192</a> samples.</p>
+
+<h3>Using window/context length 4096 samples</h3>
+<img src="figures/scatter plots/SDR, results with shorter window.svg">
+<img src="figures/scatter plots/ODG by PEMO-Q, results with shorter window.svg">
+
+<h3>Using window/context length 8192 samples</h3>
+<img src="figures/scatter plots/SDR, results with longer window.svg">
+<img src="figures/scatter plots/ODG by PEMO-Q, results with longer window.svg">
+
+<h2 id=lineplots>Comparison of AR model orders</h2>
+
+<p>The following plots use the same data as the scatter plots in the <a href=#scatterplots>previous section</a>, but this time the average values per gap length are shown.
+In each plot, the solid line represents the results using the Burg's algorithm, while the dashed line represents the results using LPC.</p>
+<p>The ODG plot for window/context length 4096 samples corresponds to Figure 2 in the paper.</p>
+
+<h3>Using window/context length 4096 samples</h3>
+<img src="figures/line plots/SDR, results with shorter window.svg">
+<img src="figures/line plots/ODG by PEMO-Q, results with shorter window.svg">
+
+<h3>Using window/context length 8192 samples</h3>
+<img src="figures/line plots/SDR, results with longer window.svg">
+<img src="figures/line plots/ODG by PEMO-Q, results with longer window.svg">
+
+<h2 id=comparisonplots>Comparison of AR-based methods with SPAIN</h2>
+
+<p>The SDR and ODG plot for the solo-intrument dataset and window/context length 4096 samples correspond to Figure 3 in the paper.</p>
+<p>The SDR plot for the IRMAS dataset and window/context length 8192 samples corresponds to Figure 5 in the paper.</p>
+
+<h3>Solo-intrument dataset, using window/context length 4096 samples</h3>
+<div class="row">
+    <div class="column">
+        <img src="figures/comparison plots/SDR, results with shorter window.svg" style="width:100%">
+    </div>
+    <div class="column">
+        <img src="figures/comparison plots/ODG by PEMO-Q, results with shorter window.svg" style="width:100%">
+    </div>
+</div>
+
+<h3>Solo-intrument dataset, using window/context length 8192 samples</h3>
+<div class="row">
+    <div class="column">
+        <img src="figures/comparison plots/SDR, results with longer window.svg" style="width:100%">
+    </div>
+    <div class="column">
+        <img src="figures/comparison plots/ODG by PEMO-Q, results with longer window.svg" style="width:100%">
+    </div>
+</div>
+
+<h3>IRMAS dataset, using window/context length 4096 samples</h3>
+<div class="row">
+    <div class="column">
+        <img src="figures/comparison plots/SDR, results irmas shorter window.svg" style="width:100%">
+    </div>
+    <div class="column">
+        <img src="figures/comparison plots/ODG by PEMO-Q, results irmas shorter window.svg" style="width:100%">
+    </div>
+</div>
+
+<h3>IRMAS dataset, using window/context length 8192 samples</h3>
+<div class="row">
+    <div class="column">
+        <img src="figures/comparison plots/SDR, results irmas longer window.svg" style="width:100%">
+    </div>
+    <div class="column">
+        <img src="figures/comparison plots/ODG by PEMO-Q, results irmas longer window.svg" style="width:100%">
+    </div>
+</div>
 
 <p>
 <a href="./index.html" class="cudlik">Back to main page</a>

@@ -1,0 +1,219 @@
+---
+layout: default
+---
+
+<h1>Statistical testing of LPC versus Burg algorithm (window/context length 4096)</h1>
+
+<a href="./pvals_short.html" class="cudlik">Window/context length 4096</a>
+<a href="./pvals_long.html" class="cudlik">Window/context length 8192</a>
+
+<p>For the assessment of statistical significance of the effect of the AR model estimator (LPC versus Burg algorithm),
+    the <a href="https://www.mathworks.com/help/stats/signrank.html">Wilcoxon signed rank test</a> was employed using
+    the following hypotheses:</p>
+<ul>
+    <li>H0: Burg algorithm and LPC lead to results with the same median,</li>
+    <li>HA: Burg algorithm leads to results with <strong>higher</strong> median.</li>
+</ul>
+<p>This was performed separately for each inpainting method, AR model order, and evaluation metric (SDR, PEMO-Q ODG).
+    For visualisation of the underlying data, see <a href="./plots.html#scatterplots">the corresponing page</a>.
+</p>
+<p>The p-value displayed in the tables below indicate the rejection of the null hypothesis, i.e., p-value &lt; 0.05
+    implies that the data feature enough evidence to reject the equality of the medians in favor of the alternative
+    hypothesis HA (at the significance level of 5%). On the other hand, p-value &gt; 0.05 means the test is
+    inconclusive.</p>
+<table>
+    <thead>
+        <tr>
+            <th>evaluation by SDR</th>
+            <th>256</th>
+            <th>512</th>
+            <th>1024</th>
+            <th>2048</th>
+            <th>3072</th>
+        </tr>
+    </thead>
+    <tbody>
+        <td>extrapolation-based</td>
+        <td class="pUnderAlpha">1.06E-21</td>
+        <td class="pUnderAlpha">2.12E-22</td>
+        <td class="pUnderAlpha">2.12E-22</td>
+        <td class="pUnderAlpha">2.12E-22</td>
+        <td class="pUnderAlpha">3.58E-20</td>
+        </tr>
+        <tr>
+            <td>Janssen, gap-wise</td>
+            <td class="pUnderAlpha">2.16E-09</td>
+            <td class="pUnderAlpha">3.89E-13</td>
+            <td class="pUnderAlpha">5.54E-10</td>
+            <td class="pUnderAlpha">3.13E-02</td>
+            <td class="pAboveAlpha">9.67E-01</td>
+        </tr>
+        <tr>
+            <td>Janssen, Hann window</td>
+            <td class="pUnderAlpha">7.82E-05</td>
+            <td class="pUnderAlpha">6.19E-04</td>
+            <td class="pAboveAlpha">9.00E-01</td>
+            <td class="pAboveAlpha">1.00</td>
+            <td class="pAboveAlpha">1.00</td>
+        </tr>
+        <tr>
+            <td>Janssen, rect. window</td>
+            <td class="pUnderAlpha">6.69E-11</td>
+            <td class="pUnderAlpha">4.67E-06</td>
+            <td class="pAboveAlpha">3.89E-01</td>
+            <td class="pAboveAlpha">9.90E-01</td>
+            <td class="pAboveAlpha">9.99E-01</td>
+        </tr>
+    </tbody>
+</table>
+<table>
+    <thead>
+        <tr>
+            <th>evaluation by ODG</th>
+            <th>256</th>
+            <th>512</th>
+            <th>1024</th>
+            <th>2048</th>
+            <th>3072</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>extrapolation-based</td>
+            <td class="pUnderAlpha">6.35E-22</td>
+            <td class="pUnderAlpha">2.12E-22</td>
+            <td class="pUnderAlpha">2.12E-22</td>
+            <td class="pUnderAlpha">2.12E-22</td>
+            <td class="pUnderAlpha">3.57E-18</td>
+        </tr>
+        <tr>
+            <td>Janssen, gap-wise</td>
+            <td class="pUnderAlpha">8.94E-13</td>
+            <td class="pUnderAlpha">1.22E-18</td>
+            <td class="pUnderAlpha">1.86E-20</td>
+            <td class="pUnderAlpha">3.42E-16</td>
+            <td class="pUnderAlpha">5.10E-06</td>
+        </tr>
+        <tr>
+            <td>Janssen, Hann window</td>
+            <td class="pAboveAlpha">1.97E-01</td>
+            <td class="pAboveAlpha">9.19E-02</td>
+            <td class="pAboveAlpha">6.13E-02</td>
+            <td class="pAboveAlpha">9.99E-01</td>
+            <td class="pAboveAlpha">9.95E-01</td>
+        </tr>
+        <tr>
+            <td>Janssen, rect. window</td>
+            <td class="pUnderAlpha">2.12E-22</td>
+            <td class="pUnderAlpha">1.84E-18</td>
+            <td class="pUnderAlpha">2.31E-02</td>
+            <td class="pAboveAlpha">9.85E-01</td>
+            <td class="pAboveAlpha">9.91E-01</td>
+        </tr>
+    </tbody>
+</table>
+
+<p>To assess the superiority of LPC in some cases, we performed the same test using a different altarnative hypothesis:
+</p>
+<ul>
+    <li>H0: Burg algorithm and LPC lead to results with the same median,</li>
+    <li>HA: Burg algorithm leads to results with <strong>lower</strong> median.</li>
+</ul>
+<p>In this case, p-values &lt; 0.05 imply statistical significance of the LPC surpassing the Burg algorithm (at the
+    significance level of 5%).</p>
+<table>
+    <thead>
+        <tr>
+            <th>evaluation by SDR</th>
+            <th>256</th>
+            <th>512</th>
+            <th>1024</th>
+            <th>2048</th>
+            <th>3072</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>extrapolation-based</td>
+            <td class="pAboveAlpha">1.00</td>
+            <td class="pAboveAlpha">1.00</td>
+            <td class="pAboveAlpha">1.00</td>
+            <td class="pAboveAlpha">1.00</td>
+            <td class="pAboveAlpha">1.00</td>
+        </tr>
+        <tr>
+            <td>Janssen, gap-wise</td>
+            <td class="pAboveAlpha">1.00</td>
+            <td class="pAboveAlpha">1.00</td>
+            <td class="pAboveAlpha">1.00</td>
+            <td class="pAboveAlpha">9.69E-01</td>
+            <td class="pUnderAlpha">3.38E-02</td>
+        </tr>
+        <tr>
+            <td>Janssen, Hann window</td>
+            <td class="pAboveAlpha">1.00</td>
+            <td class="pAboveAlpha">9.99E-01</td>
+            <td class="pAboveAlpha">1.01E-01</td>
+            <td class="pUnderAlpha">4.06E-18</td>
+            <td class="pUnderAlpha">3.22E-14</td>
+        </tr>
+        <tr>
+            <td>Janssen, rect. window</td>
+            <td class="pAboveAlpha">1.00</td>
+            <td class="pAboveAlpha">1.00</td>
+            <td class="pAboveAlpha">6.13E-01</td>
+            <td class="pUnderAlpha">1.05E-02</td>
+            <td class="pUnderAlpha">7.01E-04</td>
+        </tr>
+    </tbody>
+</table>
+<table>
+    <thead>
+        <tr>
+            <th>evaluation by ODG</th>
+            <th>256</th>
+            <th>512</th>
+            <th>1024</th>
+            <th>2048</th>
+            <th>3072</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>extrapolation-based</td>
+            <td class="pAboveAlpha">1.00</td>
+            <td class="pAboveAlpha">1.00</td>
+            <td class="pAboveAlpha">1.00</td>
+            <td class="pAboveAlpha">1.00</td>
+            <td class="pAboveAlpha">1.00</td>
+        </tr>
+        <tr>
+            <td>Janssen, gap-wise</td>
+            <td class="pAboveAlpha">1.00</td>
+            <td class="pAboveAlpha">1.00</td>
+            <td class="pAboveAlpha">1.00</td>
+            <td class="pAboveAlpha">1.00</td>
+            <td class="pAboveAlpha">1.00</td>
+        </tr>
+        <tr>
+            <td>Janssen, Hann window</td>
+            <td class="pAboveAlpha">8.04E-01</td>
+            <td class="pAboveAlpha">9.09E-01</td>
+            <td class="pAboveAlpha">9.39E-01</td>
+            <td class="pUnderAlpha">8.78E-04</td>
+            <td class="pUnderAlpha">4.67E-03</td>
+        </tr>
+        <tr>
+            <td>Janssen, rect. window</td>
+            <td class="pAboveAlpha">1.00</td>
+            <td class="pAboveAlpha">1.00</td>
+            <td class="pAboveAlpha">9.77E-01</td>
+            <td class="pUnderAlpha">1.50E-02</td>
+            <td class="pUnderAlpha">8.69E-03</td>
+        </tr>
+    </tbody>
+</table>
+
+<p>
+    <a href="./index.html" class="cudlik">Back to main page</a>
+</p>
