@@ -1,8 +1,8 @@
 # InpaintingAutoregressive
 
-This is the accompanying repository for the article *On the Use of Autoregressive Methods for Audio Inpainting* authored by Ondřej Mokrý and Pavel Rajmic, submitted to ICASSP 2025.
+This is the accompanying repository for the article *The best autoregressive approach to audio inpainting is gap-wise Janssen* authored by Ondřej Mokrý and Pavel Rajmic, submitted to EUSIPCO 2025.
 
-> The paper presents an evaluation of popular audio inpainting methods based on autoregressive modeling, namely the extrapolation-based and Janssen methods. A novel variant of the Janssen method suitable for inpainting of gaps is also proposed. The main differences between the particular popular approaches are pointed out. In the experimental part, the importance of the choice of the AR model estimator is confirmed by objective metrics. Then, a mid-scale computational experiment is presented, and its results are confirmed by a listening test. All the experiments demonstrate the superiority of the new gap-wise Janssen method.
+> A novel variant of the Janssen method for audio inpainting is presented. The new method is compared with a number of other popular audio inpainting methods based on autoregressive modeling. Main differences between the particular approaches are pointed out. In the experimental part, the importance of the choice of the AR model estimator is confirmed by objective metrics, and the effect of the chosen AR model order and window size is explored. The results of small-scale and mid-scale computational experiments are in agreement. The results show the superiority of the proposed gap-wise Janssen approach, which is confirmed by a listening test.
 
 The preprint is available at [arXiv](http://arxiv.org/abs/2403.04433).
 
@@ -17,6 +17,8 @@ The repository includes the MATLAB source codes needed to reproduce the research
 - `gaps_table.mat` – Source signals and masks, taken from [TestSignals repository](https://github.com/ondrejmokry/TestSignals).
 - `maintest.m` – Main code running the test of the AR-based methods.
 - `maintest_spain.m` – Main code running the test of the SPAIN variants.
+
+Regarding the mid-scale experiment using the IRMAS dataset, the folder **irmas** includes a list of the files used in our experiment and a Matlab script which crops the files to a length of 7 seconds. The original files can be downloaded [here](https://www.upf.edu/web/mtg/irmas).
 
 For supplementary material (graphs, audio), see the [accompanying website](https://ondrejmokry.github.io/InpaintingAutoregressive/).
 
