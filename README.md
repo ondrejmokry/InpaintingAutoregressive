@@ -1,8 +1,8 @@
 # InpaintingAutoregressive
 
-This is the accompanying repository for the article *The best autoregressive approach to audio inpainting is gap-wise Janssen* authored by Ondřej Mokrý and Pavel Rajmic, submitted to EUSIPCO 2025.
+This is the accompanying repository for the article *Tweaking autoregressive methods for inpainting of gaps in audio signals* authored by Ondřej Mokrý and Pavel Rajmic, accepted to EUSIPCO 2025.
 
-> A novel variant of the Janssen method for audio inpainting is presented. The new method is compared with a number of other popular audio inpainting methods based on autoregressive modeling. Main differences between the particular approaches are pointed out. In the experimental part, the importance of the choice of the AR model estimator is confirmed by objective metrics, and the effect of the chosen AR model order and window size is explored. The results of small-scale and mid-scale computational experiments are in agreement. The results show the superiority of the proposed gap-wise Janssen approach, which is confirmed by a listening test.
+> A novel variant of the Janssen method for audio inpainting is presented and compared to other popular audio inpainting methods based on autoregressive (AR) modeling. Both conceptual differences and practical implications are discussed. The experiments demonstrate the importance of the choice of the AR model estimator, window/context length, and model order. The results show the superiority of the proposed gap-wise Janssen approach using objective metrics, which is confirmed by a listening test.
 
 The preprint is available at [arXiv](http://arxiv.org/abs/2403.04433).
 
