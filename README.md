@@ -4,7 +4,7 @@ This is the accompanying repository for the article *Tweaking autoregressive met
 
 > A novel variant of the Janssen method for audio inpainting is presented and compared to other popular audio inpainting methods based on autoregressive (AR) modeling. Both conceptual differences and practical implications are discussed. The experiments demonstrate the importance of the choice of the AR model estimator, window/context length, and model order. The results show the superiority of the proposed gap-wise Janssen approach using objective metrics, which is confirmed by a listening test.
 
-The preprint is available at [arXiv](http://arxiv.org/abs/2403.04433).
+The preprint is available at [arXiv](http://arxiv.org/abs/2403.04433), the official version is published at [IEEE Xplore](https://ieeexplore.ieee.org/document/11226154).
 
 ## Contents
 
