@@ -2,7 +2,17 @@ clear
 clc
 close all
 
-addpath(genpath("utils"))
+paperDir = fileparts(mfilename("fullpath"));
+repoDir = fileparts(fileparts(paperDir));
+resultsDir = fullfile(paperDir, "results");
+signalsDir = fullfile(paperDir, "signals");
+if ~isfolder(resultsDir)
+    mkdir(resultsDir)
+end
+if ~isfolder(signalsDir)
+    mkdir(signalsDir)
+end
+addpath(genpath(fullfile(repoDir, "utils")))
 
 fileid = 0;
 for p = [256, 512, 1024, 2048, 3072]
@@ -13,10 +23,10 @@ for p = [256, 512, 1024, 2048, 3072]
 
         % future file name
         % filename = "results_10";
-        filename = sprintf("results_%02d", fileid);
+        filename = fullfile(resultsDir, sprintf("results_%02d", fileid));
 
         %% load signals and masks
-        load("gaps_table.mat")
+        load(fullfile(repoDir, "gaps_table.mat"))
         gaplengths = 10:10:80; % this corresponds to what is saved in gaps_table
         
         %% set params
@@ -224,7 +234,7 @@ for p = [256, 512, 1024, 2048, 3072]
                 end
         
                 S = struct("a", a, "maxit", maxit, "method", method, "p", p, "tables", sigtables, "w", w);
-                save("signals/" + filename + "_" + signame + ".mat", "-struct", "S", "-v7.3")
+                save(fullfile(signalsDir, signame + ".mat"), "-struct", "S", "-v7.3")
                 save(filename + ".mat", "a", "maxit", "method", "p", "tables", "w", "-v7.3")
                 
             end

@@ -2,12 +2,15 @@ clear
 clc
 close all
 
-addpath("../utils")
+plotDir = fileparts(mfilename("fullpath"));
+paperDir = fileparts(plotDir);
+repoDir = fileparts(fileparts(paperDir));
+addpath(fullfile(repoDir, "utils"))
 
 %% settings
 bootstrap = true;
 intervals = false;
-fold = "../results";
+fold = fullfile(paperDir, "results");
 
 filestoload = [ ...
     "results_01", "results_02", ...

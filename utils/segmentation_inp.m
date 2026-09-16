@@ -75,13 +75,13 @@ if strcmpi(wtype, 'rect')
     gana = ones(w, 1);
     gsyn = gabwin('hann', a, w, L);
     gsyn = fftshift(gsyn);
-    gsyn = normalize(gsyn, 'peak');
+    gsyn = setnorm(gsyn, 'peak');
 elseif strcmpi(wtype, 'tukey')
     gana = tukeywin(w);
     gsyn = gana; % this will be compensated later
 else
     g    = gabwin(wtype, a, w, L);
-    gana = normalize(g, 'peak'); % peak-normalization of the analysis window
+    gana = setnorm(g, 'peak'); % peak-normalization of the analysis window
     gana = fftshift(gana);
     gsyn = gabdual(gana, a, w)*w; % computing the synthesis window
 end

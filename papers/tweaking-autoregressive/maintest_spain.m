@@ -2,14 +2,24 @@ clear
 clc
 close all
 
-addpath(genpath("utils"))
-addpath(genpath("references"))
+paperDir = fileparts(mfilename("fullpath"));
+repoDir = fileparts(fileparts(paperDir));
+resultsDir = fullfile(paperDir, "results");
+signalsDir = fullfile(paperDir, "signals");
+if ~isfolder(resultsDir)
+    mkdir(resultsDir)
+end
+if ~isfolder(signalsDir)
+    mkdir(signalsDir)
+end
+addpath(genpath(fullfile(repoDir, "utils")))
+addpath(genpath(fullfile(repoDir, "references")))
 
 % future file name
-filename = "results_spain";
+filename = fullfile(resultsDir, "results_spain");
 
 %% load signals and masks
-load("gaps_table.mat")
+load(fullfile(repoDir, "gaps_table.mat"))
 gaplengths = 10:10:80; % this corresponds to what is saved in gaps_table
 
 %% set params
@@ -40,7 +50,7 @@ SPM.a = a;                % window shift
 SPM.wtype = 'hann';       % window shape
 SPM.M = M;                % number of frequency channels
 SPM.gwindow = gabwin(SPM.wtype, SPM.a, SPM.M);
-SPM.gwindow = normalize(SPM.gwindow, 'peak'); % peak-normalization of the analysis window
+SPM.gwindow = setnorm(SPM.gwindow, 'peak'); % peak-normalization of the analysis window
 SPM.gdual = gabdual(SPM.gwindow, SPM.a, SPM.M); 
 SPM.s = 1;                % increment of k
 SPM.r = 1;                % every r-th iteration increment k by s   
@@ -214,7 +224,7 @@ for i = 1:height(gaps_table)
         end
 
         S = struct("SPA", SPA, "SPM", SPM, "tables", sigtables);
-        save("signals/" + filename + "_" + signame + ".mat", "-struct", "S", "-v7.3")
+        save(fullfile(signalsDir, signame + ".mat"), "-struct", "S", "-v7.3")
         save(filename + ".mat", "SPA", "SPM", "tables", "-v7.3")
         
     end

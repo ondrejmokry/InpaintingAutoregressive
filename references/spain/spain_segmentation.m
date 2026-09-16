@@ -46,7 +46,7 @@ param.mask = [param.mask; true(L-param.Ls,1)];
 
 % construction of analysis and synthesis windows
 g = gabwin(param.wtype, param.a, param.w, L);
-gana = normalize(g,'peak'); % peak-normalization of the analysis window
+gana = setnorm(g, 'peak'); % peak-normalization of the analysis window
 gsyn = gabdual(gana, param.a, param.w)*param.w; % computing the synthesis window
 
 % this is substituting fftshift (computing indexes to swap left and right half of the windows)
