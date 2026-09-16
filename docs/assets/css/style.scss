@@ -13,6 +13,20 @@ table {
   background-color: #ffaaaa;
   color: #000000;
 }
+.etter {
+  color: #155799;
+  font-weight: 700;
+}
+.etter-note {
+  border-left: 4px solid #155799;
+  padding-left: 0.75rem;
+}
+.etter-row {
+  background-color: rgba(21, 87, 153, 0.12);
+}
+.etter-row td:first-child {
+  border-left: 4px solid #155799;
+}
 
 .cudlik {
   display: inline-block;
