@@ -12,7 +12,7 @@ Ondřej Mokrý and Pavel Rajmic, presented at EUSIPCO 2025.
 
 The preprint is available at [arXiv](http://arxiv.org/abs/2403.04433), the official version is published at [IEEE Xplore](https://ieeexplore.ieee.org/document/11226154).
 
-- [Paper-specific code and results](papers/tweaking-autoregressive/README.md)
+- [Code and data](papers/tweaking-autoregressive/)
 - [Supplementary material](https://ondrejmokry.github.io/InpaintingAutoregressive/)
 
 ### Reviving Etter method for autoregressive inpainting: Generalization, evaluation, implementation
@@ -21,12 +21,10 @@ Ondřej Mokrý, Matěj Hrdlička and Pavel Rajmic, submitted to ICUMT 2026.
 
 > Audio inpainting aims to restore missing segments in an audio waveform, as encountered in dropouts and packet losses. This paper revisits the autoregressive (AR) interpolation method proposed by Etter, which combines forward and backward AR prediction through a structured linear system, yet lacks a widely used full implementation for audio signals. We provide an open implementation and propose two practical extensions: A formulation that allows high-order AR models even when the gap length is shorter than the model order, and a causal variant tailored to packet loss concealment. The method is evaluated on musical excerpts with gaps up to 80 ms, using SNR and perceptually motivated objective difference grades, complemented by a listening test. The results show that Etter inpainting matches the performance of most AR- and sparsity-based baseline methods, with the exception of the iterative, gap-wise Janssen approach.
 
-- [Paper-specific code and results](papers/reviving-etter/README.md)
+- [Code and data](papers/reviving-etter/)
 - [Supplementary material](https://ondrejmokry.github.io/InpaintingAutoregressive/)
 
 The implementation of the Etter method is contained in `papers/reviving-etter/Etter.m`; its experiment is run with `maintest_Etter.m`. Both use the shared data and dependencies described below.
-
-## Contents
 
 ## Shared repository contents
 
