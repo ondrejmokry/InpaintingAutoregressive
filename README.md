@@ -17,9 +17,9 @@ The preprint is available at [arXiv](http://arxiv.org/abs/2403.04433), the offic
 
 ### Reviving Etter method for autoregressive inpainting: Generalization, evaluation, implementation
 
-Ondřej Mokrý, Matěj Hrdlička and Pavel Rajmic, submitted to ICUMT 2026.
+Ondřej Mokrý, Matěj Hrdlička and Pavel Rajmic, accepted to ICUMT 2026.
 
-> Audio inpainting aims to restore missing segments in an audio waveform, as encountered in dropouts and packet losses. This paper revisits the autoregressive (AR) interpolation method proposed by Etter, which combines forward and backward AR prediction through a structured linear system, yet lacks a widely used full implementation for audio signals. We provide an open implementation and propose two practical extensions: A formulation that allows high-order AR models even when the gap length is shorter than the model order, and a causal variant tailored to packet loss concealment. The method is evaluated on musical excerpts with gaps up to 80 ms, using SNR and perceptually motivated objective difference grades, complemented by a listening test. The results show that Etter inpainting matches the performance of most AR- and sparsity-based baseline methods, with the exception of the iterative, gap-wise Janssen approach.
+> Audio inpainting aims to restore missing segments in audio waveforms, such as those caused by dropouts or packet loss. This paper revisits the autoregressive (AR) interpolation method proposed by Etter, which formulates joint forward and backward AR prediction as a closed-form, structured linear system. Despite its theoretical elegance, the method has lacked an open implementation for audio. We provide publicly available source code and propose two practical extensions: A formulation that allows high-order AR models even when the gap length is shorter than the model order, and a causal variant tailored to packet loss concealment. The method is evaluated on musical excerpts with gaps up to 80 ms, using SNR and perceptually motivated objective difference grades, complemented by a listening test. The results show that Etter inpainting matches the performance of most AR- and sparsity-based baseline methods, with the exception of the iterative, gap-wise Janssen approach.
 
 The preprint is available at [arXiv](http://arxiv.org/abs/2609.18401).
 
